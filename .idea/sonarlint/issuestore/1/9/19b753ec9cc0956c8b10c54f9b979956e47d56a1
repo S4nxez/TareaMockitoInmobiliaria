@@ -1,0 +1,6 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+
+java:S1319"iThe type of "viviendas" should be an interface such as "List" rather than the implementation "ArrayList".(‚Íùü
+?
+java:S2140")Use "java.util.Random.nextInt()" instead.(œİ‡±

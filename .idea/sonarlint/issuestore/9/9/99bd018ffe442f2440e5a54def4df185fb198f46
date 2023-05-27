@@ -1,0 +1,9 @@
+
+`	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+k	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â†Öëşÿÿÿÿ
+f	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Æ¡ƒ
+f	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Æ¡ƒ
+~
+java:S1845"hRename method "getListaViviendas" to prevent any misunderstanding/clash with method "getListaviviendas".(¸áŠß
+
+java:S1845W"zRename method "getListaViviendasProvincia" to prevent any misunderstanding/clash with method "getListaviviendasProvincia".(»‰ÂÃ
