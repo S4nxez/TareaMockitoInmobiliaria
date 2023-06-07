@@ -91,7 +91,7 @@ public class MainViviendas {
                 System.out.println(Constantes.VIVIENDA_NO_AÑADIDA);
             }
         } catch (m2Exception e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
     }
 

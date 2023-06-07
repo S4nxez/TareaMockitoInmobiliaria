@@ -11,7 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Spy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,25 +33,9 @@ public class ServiciosViviendasImplTest {
     @Mock
     private DaoViviendas daoViviendas;
 
-    @BeforeEach
-    public void setUp() {
-        DaoViviendas daoViviendas = new DaoViviendasImpl();
-        serviciosViviendas = new ServiciosViviendasImpl(daoViviendas);
-    }
-
-    @Test
-    public void testIsEmptyViviendasList() throws m2Exception {
-        Assertions.assertTrue(serviciosViviendas.isEmptyViviendasList());
-
-        Vivienda vivienda = new Vivienda(1, "Calle A", 10, "Provincia A", 100000, 100);
-        serviciosViviendas.addVivienda(vivienda);
-
-        Assertions.assertFalse(serviciosViviendas.isEmptyViviendasList());
-    }
-
-
     @Test
     public void testGetListaViviendas() throws m2Exception {
+
         List<Vivienda> listaViviendas = new ArrayList<>();
 
         listaViviendas.add(new Vivienda(1, "Calle sdfsf", 1, "Madrid", 100000, 50));
@@ -60,11 +46,36 @@ public class ServiciosViviendasImplTest {
         List<Vivienda> respuesta = serviciosViviendas.getListaViviendas();
 
         assertThat(respuesta).isEqualTo(listaViviendas);
-        System.out.println(listaViviendas.size());
-        assertNotNull(listaViviendas);
+        assertNotNull(respuesta);
         assertEquals(3, respuesta.size());
     }
+    @Test
+    public void testGetListaViviendas3() throws m2Exception {
+        List<Vivienda> listaViviendas = new ArrayList<>();
 
+        listaViviendas.add(new Vivienda(1, "Calle sdfsf", 1, "Madrid", 100000, 50));
+        listaViviendas.add(new Vivienda(2, "Calle das", 4, "Madrid", 300000, 50));
+        listaViviendas.add(new Vivienda(3, "Calle lkjl", 5, "Madrid", 210000, 50));
+
+        DaoViviendas daoViviendasSpy = Mockito.spy(DaoViviendasImpl.class);
+        when(daoViviendasSpy.getListaViviendas()).thenReturn(listaViviendas);
+
+        serviciosViviendas = new ServiciosViviendasImpl(daoViviendasSpy);
+        List<Vivienda> respuesta = serviciosViviendas.getListaViviendas();
+
+        assertThat(respuesta).isEqualTo(listaViviendas);
+        assertNotNull(respuesta);
+        assertEquals(3, respuesta.size());
+    }
+    @Test
+    public void testIsEmptyViviendasList() throws m2Exception {
+        Assertions.assertTrue(serviciosViviendas.isEmptyViviendasList());
+
+        Vivienda vivienda = new Vivienda(1, "Calle A", 10, "Provincia A", 100000, 100);
+        serviciosViviendas.addVivienda(vivienda);
+
+        Assertions.assertFalse(serviciosViviendas.isEmptyViviendasList());
+    }
     @Test
     public void testAddVivienda() throws m2Exception {
         Vivienda vivienda = new Vivienda(1, "Calle A", 10, "Provincia A", 100000, 100);
